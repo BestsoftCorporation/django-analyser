@@ -1,0 +1,32 @@
+{% load static %}
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'dashboard:home' %}">
+         Dashboard
+    </a>
+
+    <ul class="navbar-nav mr-auto">
+         <li class="nav-item">
+             <a class="nav-link" href="">Load</a>
+         </li>
+
+    </ul>
+
+     <ul class="navbar-nav mr-left">
+        <li class="nav-item">
+
+
+                <a class="nav-link disabled" href="{% url 'dashboard:home' %}">Control panel</a>
+
+        </li>
+    </ul>
+
+
+
+
+</nav>
