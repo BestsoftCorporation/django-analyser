@@ -26,7 +26,18 @@
     <body >
 
         {% include 'header.html' %}
+ <div class="d-flex" id="wrapper">
 
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+
+      <div class="list-group list-group-flush">
+        <a href="{% url 'dashboard:products' %}" class="list-group-item list-group-item-action bg-light">Products</a>
+        <a href="{% url 'dashboard:users' %}" class="list-group-item list-group-item-action bg-light">Users</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Reviews</a>
+
+      </div>
+    </div>
         <div class="container" style="text-align: center; margin-top: 50px">
             {% block content %}
                 <p>Placeholder text in base template. Replace with page content.</p>
