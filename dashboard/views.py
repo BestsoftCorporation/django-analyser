@@ -10,7 +10,12 @@ def products(request):
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
-            pro = Products.objects.filter(name__icontains=form.cleaned_data['search']) & Products.objects.filter(price__gt=form.cleaned_data['price'])
+            pro = Products.objects.filter(name__icontains=form.cleaned_data['search'])
+            if (form.cleaned_data.get('option')=='2'):
+                print("test")
+                pro = Products.objects.filter(name__icontains=form.cleaned_data['search']) & Products.objects.filter(price__gt=form.cleaned_data['price'])
+            elif(form.cleaned_data.get('option')=='1'):
+                pro = Products.objects.filter(name__icontains=form.cleaned_data['search']) & Products.objects.filter(price__lte=form.cleaned_data['price'])
             avgPrice = pro.aggregate(Avg('price'))
             countPrice = pro.aggregate(Count('id'))
             sumPrice = pro.aggregate(Sum('price'))
