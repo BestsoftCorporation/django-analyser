@@ -17,8 +17,17 @@ def products(request):
         return render(request, 'products.html', {'page_title': 'Dashboard','Products': pro,'form': form})
 
 def users(request):
-    usr = Users.objects.all()
-    return render(request, 'users.html', {'page_title': 'Dashboard','Users': usr})
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            usr = Users.objects.filter(first_name__icontains=form.cleaned_data['search']) | Users.objects.filter(last_name__icontains=form.cleaned_data['search'])
+            return render(request, 'users.html', {'page_title': 'Dashboard','Users': usr,'form': form})
+    else:
+        form = SearchForm()
+        usr = Users.objects.all()
+        return render(request, 'users.html', {'page_title': 'Dashboard','Users': usr,'form': form})
+
+
 
 
 

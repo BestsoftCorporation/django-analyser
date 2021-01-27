@@ -3,6 +3,26 @@
 {%  block content %}
 
 <h1>Users</h1>
+ <form method="post"  enctype="multipart/form-data" action="{% url 'dashboard:users' %}">
+   {% csrf_token %}
+     <div class="col-lg-6">
+    <div class="input-group">
+        {{form.search}}
+       {% if form.search.errors %}
+                <div class="alert alert-danger">
+                    <ul style="text-align: left">
+                        {% for error in form.search.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+      <span class="input-group-btn">
+              <input type="submit" class="btn btn-primary" value="Search"/>
+      </span>
+         </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+ </form>
 <table class="table table-dark">
   <thead>
     <tr>
