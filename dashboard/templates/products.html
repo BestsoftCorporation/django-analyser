@@ -5,8 +5,12 @@
 
  <form method="post"  enctype="multipart/form-data" action="{% url 'dashboard:products' %}">
    {% csrf_token %}
+
      <div class="col-lg-6">
     <div class="input-group">
+        {{form.price}}
+        {{form.option}}
+        &nbsp;&nbsp;&nbsp;&nbsp;
         {{form.search}}
        {% if form.search.errors %}
                 <div class="alert alert-danger">
@@ -45,6 +49,8 @@
 
   </tbody>
 </table>
+
+<p><b>Average price:</b>{{AvgPrice.price__avg}}<br><b>Num of products shown:</b>{{CountPrice.id__count}}<br><b>Prics sum:</b>{{SumPrice.price__sum}}</p>
 
 
 {% endblock %}
