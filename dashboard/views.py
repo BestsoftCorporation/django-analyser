@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Products,Users
+from .models import Products,Users,Reviews
 from .forms import SearchForm
 from django.db.models import Avg,Count,Sum
 
@@ -39,6 +39,12 @@ def users(request):
         usr = Users.objects.all()
         return render(request, 'users.html', {'page_title': 'Dashboard','Users': usr,'form': form})
 
+
+def reviews(request):
+    form = SearchForm()
+    rvs = Reviews.objects.all()
+    
+    return render(request, 'reviews.html', {'page_title': 'Dashboard','Reviews': rvs,'form': form})
 
 
 

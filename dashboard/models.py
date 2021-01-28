@@ -18,6 +18,17 @@ class Products(models.Model):
         db_table = 'products'
 
 
+class Reviews(models.Model):
+    iduser = models.PositiveIntegerField(db_column='idUser')  # Field name made lowercase.
+    idproduct = models.PositiveIntegerField(db_column='idProduct')  # Field name made lowercase.
+    comment = models.CharField(max_length=255, blank=True, null=True)
+    date = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'reviews'
+
+
 class Users(models.Model):
     first_name = models.CharField(max_length=30, blank=True, null=True)
     last_name = models.CharField(max_length=30, blank=True, null=True)
