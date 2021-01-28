@@ -43,8 +43,9 @@ def users(request):
 def reviews(request):
     form = SearchForm()
     rvs = Reviews.objects.all()
-    
-    return render(request, 'reviews.html', {'page_title': 'Dashboard','Reviews': rvs,'form': form})
+    usr = Users.objects.all()
+    pro = Products.objects.all()
+    return render(request, 'reviews.html', {'page_title': 'Dashboard', 'Products': pro,'Users': usr,'Reviews': rvs,'form': form})
 
 
 

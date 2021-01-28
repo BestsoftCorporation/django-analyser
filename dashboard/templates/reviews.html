@@ -37,8 +37,17 @@
    {% for review in Reviews %}
     <tr>
       <th scope="row">{{ review.id }}</th>
-      <td>{{ review.iduser }}</td>
-      <td>{{ review.idproduct }}</td>
+         {% for user in Users %}
+           {% if review.iduser == user.id %}
+             <td>{{user.first_name}}</td>
+           {% endif%}
+         {% endfor %}
+
+       {% for product in Products %}
+           {% if review.idproduct == product.id %}
+             <td>{{product.name}}</td>
+           {% endif%}
+         {% endfor %}
       <td>{{ review.comment }}</td>
     </tr>
    {% endfor %}
